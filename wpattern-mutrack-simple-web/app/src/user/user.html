@@ -1,0 +1,76 @@
+<div>
+  <button type="button" ng-hide="showAddEditUser" ng-click="show()">
+    New User
+  </button>
+
+  <form ng-submit="saveUser(user)" ng-hide="!showAddEditUser">
+
+
+      <center  ><img ng-src="{{user.mimeType}},{{user.file}}" width="150" class="img-circle img80_80" /></center>
+
+
+                      Avatar
+           <br />
+             <!--id="myFile"--> <!--ng-hide="showAddEditformulario" ng-click="show()"-->
+                <input   type="file" class="btn btn-danger btn-xs"   ng-model="user.file" accept="image/*"
+                   multiple app-filereader ng-change="updateLinkImage(user.file[0])" />
+
+                <br />
+
+
+    <div>
+      <label>Name</label>
+      <input type="text" placeholder="Name" ng-model="user.name" minlength="4" maxlength="120" required>
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input type="email" placeholder="Email" ng-model="user.email" maxlength="255" required>
+    </div>
+
+    <div>
+      <label>Password</label>
+      <input type="password" placeholder="Password" ng-model="user.password" minlength="4" maxlength="30" required>
+    </div>
+
+    <div>
+      <label>Permissions</label>
+      <div ng-repeat="permission in permissions">
+        <input id="{{permission.role}}" type="checkbox" checklist-model="user.permissions" checklist-value="permission">
+        <label for="{{permission.role}}">{{permission.role | formatPermission}}</label>
+      </div>
+    </div>
+
+    <button type="submit">Save</button>
+    <button type="button" ng-click="hide()">Cancel</button>
+  </form>
+
+  <div>
+    <br/><h3>Users</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+            <th>File</th>
+          <th>Permissions</th>
+
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+        <td>  <img ng-src="{{user.mimeType}},{{user.file}}" width="50" /> </td>
+          <td>
+            <div ng-repeat="permission in user.permissions">{{ permission.role | formatPermission}}</div>
+          </td>
+          <td><button ng-click="editUser(user)">Edit</button></td>
+          <td><button ng-click="deleteUser(user)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

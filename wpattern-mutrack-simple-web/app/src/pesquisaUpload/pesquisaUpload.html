@@ -1,0 +1,76 @@
+
+
+  <div>
+
+
+  <center><img ng-src="{{pesquisa.mimeType}},{{pesquisa.file}}" width="400" class="img-circle img80_80" ng-repeat="pesquisa in fileuploads" /></center>
+
+                 {{msg}}  <input name="img"   type="text" placeholder="Nome Image" ng-model="pesquisa.image" ng-repeat="pesquisa in fileuploads" />
+
+
+
+
+
+                    <form name="theForm"  ng-submit="buscaFile(fileupload)"  >
+
+
+                      <br>
+
+                           <button type="button" value="Voltar" onClick="history.go(-1)" class="btn btn-danger btn-s">Voltar </button>
+                       <br><br>
+
+
+
+                      <div class="blocktext">
+
+                       <h3 class="blockcenter">Seja bem vindo!<br> Utilize o nome da imagem que vc procura.</h3>
+
+                    <div >
+                     <br><br>
+                         <input name="img"   type="text" placeholder="Nome Image" ng-model="fileupload.image" />
+                           <br/>
+
+                            <button  type="Submit" value="Pesquisar" class="btn btn-danger btn-s" >Pesquisar</button>
+
+
+               <button type="reset" ng-click="hideCadCliente()" class="btn btn-danger btn-s"><span class="glyphicon glyphicon-trash"></span>Limpar Nome</button>
+
+
+                                        </div>
+
+                                        
+                                                         <table>
+                                                           <thead>
+                                                             <tr>
+                                                                   <th>IMAGE</th>
+                                                                 <th>NOME IMAGE</th>
+
+                                                               <th></th>
+                                                               <th></th>
+                                                             </tr>
+                                                           </thead>
+                                                           <tbody>
+                                                            <tr ng-repeat="pesquisa in fileuploads">
+
+
+
+                                                           <td> <img ng-src="{{pesquisa.mimeType}},{{pesquisa.file}}" width="150" /></td>
+                                                                 <td>{{ pesquisa.image }}</td>
+
+
+                                                             </tr>
+                                                           </tbody>
+                                                         </table>
+                                                     </div>
+
+
+  </div>
+
+                    </form>
+
+
+  <!--   <pre >{{fileupload | json}}</pre> -->
+
+
+
+  </div>

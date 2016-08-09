@@ -1,0 +1,80 @@
+
+
+
+
+
+    <form name="theForm" novalidate  ng-submit="saveUser(user)" >
+                                       <center>{{msg}}</center>
+
+
+        <img ng-src="{{user.mimeType}},{{user.file}}" width="100" class="img-circle img80_80" />
+
+
+
+
+                          Avatar :
+                         <br />
+   <input  type="file" class="btn btn-danger btn-xs"ng-model="user.file" accept="image/*" multiple app-filereader ng-change="updateLinkImage(user.file[0])"/>
+                      <br />
+
+
+
+
+        <label>Nome</label>
+        <input type="text" placeholder="Name" ng-model="user.name"required  >
+
+
+
+      </div>
+
+      <div ng-class="{'has-error': theForm.email$touched && (theForm.email.$error.required) , 'has-success':theForm.email.$valid}">
+        <label>Email</label>
+        <input type="email" placeholder="Email" ng-model="user.email" required name="email">
+          <span ng-show="theForm.email.$touched && theForm.email.$error.required" class="label label-danger">Ex: nome@gmail.com</span>
+      </div>
+
+      <div ng-class="{'has-error': theForm.password.$touched && (theForm.password.$error.required || theForm.password.$error.minlength) , 'has-success':theForm.password.$valid}">
+        <label>Senha</label>
+
+        <input    type="password" placeholder="Password" ng-model="user.password"  name="password"
+        class="form-control"  required ng-minlength=4 maxlength="4" >
+
+        <span ng-show="theForm.password.$touched && theForm.password.$error.required" class="label label-danger">Ex: ****</span>
+        <span ng-show="theForm.password.$touched && theForm.password.$error.minlength" class="label label-danger">
+          *Apenas  4 Dígitos Ex: **** faltam {{4- theForm.password.$viewValue.length}}</span>
+
+
+
+      </div>
+
+
+              <div>
+                <label>Usuários</label>
+                <div ng-repeat="permission in permissions">
+                  <input id="{{permissionEdit.role}}" type="checkbox" checklist-model="user.permissions" checklist-value="permissionEdit"
+                   ng-hide="showAddEditUser" ng-click="show()">
+                  <label for="{{permissionEdit.role}}">{{permissionEdit.role | formatCadastro}}</label>
+                   </div>
+
+
+              </div>
+
+
+
+
+
+
+
+
+      <button  type="submit" ng-hide="!showAddEditUser"><img ng-src="../images/save.gif" width="100" /> <br> Salvar </button>
+      <button type="button" ng-click="hide()">Cancelar</button>
+      <input type="button" value="Voltar" onClick="history.go(-1)">
+
+
+
+    </form>
+    <!--
+    <pre >{{permissionEdit|json}}</pre>
+-->
+
+  </div>

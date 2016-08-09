@@ -1,0 +1,31 @@
+<section>
+
+
+  <center>
+    <div class="panel-heading text-center  bg-success">
+      <h3 ng-show="!authDetails.authenticated"><a href="#/"><img ng-src="../../images/user1.png" width="42" class="img-circle img85_85" /></a></h3>
+      <h3 ng-show="authDetails.authenticated"><a href="#/"><img ng-src="{{authDetails.mimeType}},{{authDetails.file}}" width="100" class="img-circle img580_580" /></a></h3>
+
+    </div>
+
+    <ul class="links">
+
+        <li ng-show="hasAnyPermission(['ROLE_USER','ROLE_ADMIN'])">
+          <a href="#/editUser">Editar Perfil</a>
+
+          <li ng-show="!authDetails.authenticated"><a href="#/Cadastro" >
+                <img ng-src="../images/cadastro.gif" width="200" /><br>
+                        Para se cadastrar clique aqui</a></li>
+
+        </li>
+
+
+  </ul>
+
+
+
+
+
+</center>
+
+</section>

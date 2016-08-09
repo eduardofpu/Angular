@@ -1,0 +1,41 @@
+<!--<h1><a href="#/">WPattern Mutrack Simple</a></h1>-->
+
+
+
+
+
+<div class="panel-heading text-center  bg-success">
+
+<h3 ng-show="!authDetails.authenticated"><a href="#/"><img ng-src="../../images/user1.png" width="42"  height="42" align="left"  /></a></h3>
+
+<h3 ng-show="authDetails.authenticated">
+        <a href="#/"><img ng-src="{{authDetails.mimeType}},{{authDetails.file}}"
+          width="42" height="42" align="left"class="img-circle img80_80"/></a>
+
+   </h3>
+
+
+
+</div>
+
+
+
+<nav class="links" ng-controller="headerSrv">
+  <ul>
+
+    <li ng-show="hasAnyPermission(['ROLE_ADMIN','ROLE_USER'])"><a href="#/packagee">Packages</a></li>
+      <li ng-show="hasAnyPermission(['ROLE_ADMIN'])"><a href="#/user">Usuários</a></li>
+    <li ng-show="hasAnyPermission(['ROLE_ADMIN','ROLE_USER'])"><a href="#/userTable">Editar Perfil</a></li>
+    <li ng-show="hasAnyPermission(['ROLE_ADMIN','ROLE_USER'])"><a href="#/file">Upload</a></li>
+    <li ng-show="hasAnyPermission(['ROLE_ADMIN','ROLE_USER'])"><a href="#/pesquisaUpload">Pesquisa File</a></li>
+    <li ng-show="!authDetails.authenticated"><a href="#/login">Login</a></li>
+    <li ng-show="authDetails.authenticated"><a href="#/" ng-click="logout()">Logout</a></li>
+  </ul>
+</nav>
+<nav class="main">
+  <ul>
+    <li class="menu">
+      <a class="fa-bars" href="#menu">Menu</a>
+    </li>
+  </ul>
+</nav>
